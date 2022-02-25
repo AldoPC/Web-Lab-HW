@@ -23,4 +23,6 @@ switch (opcion) {
   case 5:
     console.log(mateBasica.modulo(num1, num2));
     break;
+  default:
+    console.log("Opcion no valida");
 }
