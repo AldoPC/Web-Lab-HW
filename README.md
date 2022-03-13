@@ -1,2 +1,2 @@
 # Web Lab HW
- Homeworks for Web Lab
+ Homeworks and class activities for Web Lab
