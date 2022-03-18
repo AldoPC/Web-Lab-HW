@@ -8,9 +8,10 @@ router.get("/create", bicicletaController.Bicicleta_create_get);
 
 router.post("/create", bicicletaController.Bicicleta_create_post);
 
-router.post("/:id/delete", bicicletaController.Bicicleta_delete_post);
+router.delete("/:id/delete", bicicletaController.Bicicleta_delete_post);
 
 router.get("/:id/update", bicicletaController.Bicicleta_update_get);
-router.post("/:id/update", bicicletaController.Bicicleta_update_post);
+
+router.put("/:id/update", bicicletaController.Bicicleta_update_post);
 
 module.exports = router;
