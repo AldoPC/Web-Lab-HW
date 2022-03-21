@@ -4,8 +4,8 @@ exports.up = function(knex) {
         table.increments('id');
         table.string('modelo', 255).notNullable();
         table.string('color', 512).notNullable();
-        table.float('lat').notNullable();
-        table.float('lon').notNullable();
+        table.float('lat', 14, 10).notNullable();
+        table.float('lon', 14, 10).notNullable();
         table.timestamps(true, true);
       });
   };
