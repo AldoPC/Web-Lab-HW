@@ -16,7 +16,7 @@ module.exports = {
     Usuario.findByIdAndUpdate(
       req.params.id,
       update_values,
-      function (err, usuario) {
+      function (err, usurio) {
         if (err) {
           console.log(err);
           res.render("usuario/update", {

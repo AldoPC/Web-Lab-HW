@@ -1,0 +1,16 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-brand{
+    padding-left: 10px;
+}
+
+.navbar-toggler{
+    margin-right: 10px;
+}
+
+h3, p{
+    padding: 10px;
+}
