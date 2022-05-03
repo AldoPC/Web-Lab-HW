@@ -1,4 +1,5 @@
 let Usuario = require("../models/usuario");
+let bcrypt = require("bcrypt");
 
 module.exports = {
   list: function (req, res, next) {
@@ -32,6 +33,26 @@ module.exports = {
         }
       }
     );
+  },
+  login_get: function (req, res, next) {
+    res.render("usuarios/login", { errors: {}, usuario: new Usuario() });
+  },
+  login: async function (req, res, next) {
+    let usuario = await Usuario.findOne({ email: req.body.email });
+    if (usuario) {
+      if (!usuario.verificado) {
+        res.json({ error: "No esta verificado" });
+      }
+      let passwordValidation = await bcrypt.compare(
+        req.body.password,
+        usuario.password
+      );
+      if (!passwordValidation) {
+        res.json({ error: "Contraseña incorrecta" });
+      } else {
+        res.redirect("/");
+      }
+    }
   },
   create_get: function (req, res, next) {
     res.render("usuarios/create", { errors: {}, usuario: new Usuario() });
