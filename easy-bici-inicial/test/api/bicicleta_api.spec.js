@@ -33,7 +33,6 @@ describe("Bicicletas API", () => {
         let res = JSON.parse(body);
         expect(response.statusCode).to.be(200);
         let bicis_num = Object.keys(res).length;
-        console.log(bicis_num);
         expect(bicis_num).to.be(1);
         done();
       });
@@ -44,7 +43,7 @@ describe("Bicicletas API", () => {
     it("Status 200", (done) => {
       let headers = { "content-type": "application/json" };
       let aBici =
-        '{"code" : 3, "color": "green", "modelo": "bmx", "lat": 19.28, "lon": -99.13}';
+        '{"code" : 3, "color": "green", "modelo": "bmx", "lat": 99.13, "lon": -19.28}';
       request.post(
         {
           headers: headers,
@@ -55,8 +54,8 @@ describe("Bicicletas API", () => {
           expect(response.statusCode).to.be(200);
           let bici = JSON.parse(body).bicicleta;
           expect(bici.color).to.be("green");
-          expect(bici.ubicacion[0]).to.be(19.28);
-          expect(bici.ubicacion[1]).to.be(-99.13);
+          expect(bici.ubicacion[1]).to.be(-19.28);
+          expect(bici.ubicacion[0]).to.be(99.13);
           done();
         }
       );

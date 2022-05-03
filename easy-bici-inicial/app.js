@@ -10,6 +10,8 @@ let biciRouter = require("./routes/bicicletas");
 let biciRouterAPI = require("./routes/api/bicicletas");
 let usuariosAPIRouter = require("./routes/api/usuarios");
 let usuariosRouter = require("./routes/usuarios");
+let reservasRouter = require("./routes/reservas");
+
 let tokenRouter = require("./routes/token");
 
 var app = express();
@@ -41,6 +43,7 @@ app.use("/bicicletas", biciRouter);
 app.use("/api/bicicletas", biciRouterAPI);
 app.use("/api/usuarios", usuariosAPIRouter);
 app.use("/usuarios", usuariosRouter);
+app.use("/reservas", reservasRouter);
 app.use("/token", tokenRouter);
 
 // catch 404 and forward to error handler

@@ -1,4 +1,5 @@
 let Usuario = require("../models/usuario");
+let Bicicleta = require("../models/bicicleta");
 let bcrypt = require("bcrypt");
 
 module.exports = {
@@ -99,5 +100,23 @@ module.exports = {
       if (err) next(err);
       else res.redirect("/usuarios");
     });
+  },
+  reserva_get: function (req, res, next) {
+    Usuario.findById(req.params.id, function (err, usuario) {
+      res.render("usuarios/reserva", { errors: {}, usuario: usuario });
+    });
+  },
+  reserva: async function (req, res, next) {
+    let bicicleta = await Bicicleta.findOne({ code: req.body.bicicleta });
+    let usuario = await Usuario.findOne({ nombre: req.body.usuario });
+    usuario.reservar(
+      bicicleta._id,
+      req.body.desde,
+      req.body.hasta,
+      function (err, reserva) {
+        if (err) next(err);
+        else res.redirect("/usuarios");
+      }
+    );
   },
 };

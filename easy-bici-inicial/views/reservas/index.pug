@@ -1,0 +1,19 @@
+extends ../layout
+
+block content 
+    h1 Listado de Reservas 
+
+    table.table 
+        thead  
+            tr 
+                th Desde
+                th Hasta
+                th Bicicleta
+                th Usuario
+        tbody 
+            each reserva in reservas
+                tr
+                    td=reserva.desde
+                    td=reserva.hasta
+                    td=reserva.bicicleta
+                    td=reserva.usuario

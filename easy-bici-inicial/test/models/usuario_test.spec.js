@@ -58,8 +58,6 @@ describe("Testing usuarios", function () {
           .populate("bicicleta")
           .populate("usuario")
           .exec(function (err, reservas) {
-            console.log(reservas[0]);
-            console.log(usuario);
             expect(reservas.length).to.be(1);
             expect(reservas[0].diasDeReserva()).to.be(2);
             expect(reservas[0].bicicleta.code).to.be(1);
